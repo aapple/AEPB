@@ -54,4 +54,9 @@ public class OrderlyParkingLot {
         parkingLocation.remove(plateNumber);
         return car;
     }
+
+    public Integer getRemainingCapacity(){
+        return size - parkingLocation.size();
+    }
+
 }
