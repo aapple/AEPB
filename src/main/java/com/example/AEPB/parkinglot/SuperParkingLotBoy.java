@@ -1,4 +1,4 @@
-package com.example.AEPB;
+package com.example.AEPB.parkinglot;
 
 import lombok.AllArgsConstructor;
 
@@ -15,7 +15,7 @@ public class SuperParkingLotBoy extends ParkingBoy {
     public Optional<Ticket> park(Car car){
         Ticket ticket = new Ticket();
         Optional<ParkingLot> parkingLot = parkingLotList.stream().max(
-                Comparator.comparingInt(ParkingLot::getRemainingCapacity));
+                Comparator.comparingDouble(ParkingLot::getVacancyRate));
 
         if (parkingLot.isEmpty()){
             return Optional.empty();

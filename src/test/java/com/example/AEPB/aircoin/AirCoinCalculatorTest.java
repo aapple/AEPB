@@ -1,5 +1,7 @@
-package com.example.AEPB;
+package com.example.AEPB.aircoin;
 
+import com.example.AEPB.aircoin.AirCoin;
+import com.example.AEPB.aircoin.AirCoinCalculator;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,5 +1,9 @@
-package com.example.AEPB;
+package com.example.AEPB.parkinglot;
 
+import com.example.AEPB.parkinglot.Car;
+import com.example.AEPB.parkinglot.ParkingLot;
+import com.example.AEPB.parkinglot.SmartParkingLotBoy;
+import com.example.AEPB.parkinglot.Ticket;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

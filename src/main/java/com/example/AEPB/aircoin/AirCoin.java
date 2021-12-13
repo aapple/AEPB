@@ -1,4 +1,4 @@
-package com.example.AEPB;
+package com.example.AEPB.aircoin;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

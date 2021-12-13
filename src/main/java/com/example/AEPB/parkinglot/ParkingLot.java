@@ -1,4 +1,4 @@
-package com.example.AEPB;
+package com.example.AEPB.parkinglot;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -57,6 +57,10 @@ public class ParkingLot {
 
     public Integer getRemainingCapacity(){
         return size - parkingLocation.size();
+    }
+
+    public Double getVacancyRate(){
+        return getRemainingCapacity()*1.0/size;
     }
 
 }

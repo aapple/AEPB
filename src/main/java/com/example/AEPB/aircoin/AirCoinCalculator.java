@@ -1,4 +1,4 @@
-package com.example.AEPB;
+package com.example.AEPB.aircoin;
 
 import java.util.Objects;
 
