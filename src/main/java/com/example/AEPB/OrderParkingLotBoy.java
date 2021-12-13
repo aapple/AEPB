@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
-public class ParkingLotManager {
+public class OrderParkingLotBoy extends ParkingBoy{
 
-    private List<OrderlyParkingLot> parkingLotList;
+    private List<ParkingLot> parkingLotList;
 
-    public Ticket park(Car car){
+    @Override
+    public Optional<Ticket> park(Car car){
         Ticket ticket = new Ticket();
         for (int i = 0; i < parkingLotList.size(); i++) {
             Optional<String> park = parkingLotList.get(i).park(car);
@@ -20,9 +21,10 @@ public class ParkingLotManager {
                 break;
             }
         }
-        return ticket;
+        return Optional.of(ticket);
     }
 
+    @Override
     public Car pickUp(Ticket ticket){
         return parkingLotList.get(ticket.getParkingLotIndex()).pickUp(ticket.getPlateNumber());
     }

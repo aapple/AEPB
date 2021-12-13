@@ -7,14 +7,15 @@ import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
-public class SmartParkingLotManager {
+public class SmartParkingLotBoy extends ParkingBoy {
 
-    private List<OrderlyParkingLot> parkingLotList;
+    private List<ParkingLot> parkingLotList;
 
+    @Override
     public Optional<Ticket> park(Car car){
         Ticket ticket = new Ticket();
-        Optional<OrderlyParkingLot> parkingLot = parkingLotList.stream().max(
-                Comparator.comparingInt(OrderlyParkingLot::getRemainingCapacity));
+        Optional<ParkingLot> parkingLot = parkingLotList.stream().max(
+                Comparator.comparingInt(ParkingLot::getRemainingCapacity));
 
         if (parkingLot.isEmpty()){
             return Optional.empty();
@@ -29,6 +30,7 @@ public class SmartParkingLotManager {
         return Optional.of(ticket);
     }
 
+    @Override
     public Car pickUp(Ticket ticket){
         return parkingLotList.get(ticket.getParkingLotIndex()).pickUp(ticket.getPlateNumber());
     }

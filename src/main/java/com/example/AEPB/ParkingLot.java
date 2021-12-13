@@ -14,7 +14,7 @@ import java.util.Optional;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class OrderlyParkingLot {
+public class ParkingLot {
 
     private Integer size;
 
