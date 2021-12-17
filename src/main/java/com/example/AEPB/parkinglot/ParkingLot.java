@@ -21,32 +21,30 @@ public class ParkingLot {
     private Map<String, Integer> parkingLocation;
     private List<Car> cars;
 
-    public Optional<String> park(Car car){
-        if (parkingLocation.containsKey(car.getPlateNumber())){
+    public Optional<String> park(Car car) {
+
+        if (parkingLocation.containsKey(car.getPlateNumber())) {
             throw new RuntimeException("plateNumber is exist");
         }
-        if (parkingLocation.size() >= size){
+
+        if (parkingLocation.size() >= size) {
             return Optional.empty();
         }
 
-        Integer location = null;
-        for (int i = 0; i < cars.size(); i++) {
-            if (Objects.isNull(cars.get(i))){
-                location = i;
+        for (int location = 0; location < cars.size(); location++) {
+            if (Objects.isNull(cars.get(location))) {
+                parkingLocation.put(car.getPlateNumber(), location);
+                cars.add(location, car);
                 break;
             }
         }
-        if (Objects.isNull(location)){
-            return Optional.empty();
-        }
-        parkingLocation.put(car.getPlateNumber(), location);
-        cars.add(location, car);
+
         return Optional.of(car.getPlateNumber());
     }
 
-    public Car pickUp(String plateNumber){
+    public Car pickUp(String plateNumber) {
         Integer location = parkingLocation.get(plateNumber);
-        if (Objects.isNull(location)){
+        if (Objects.isNull(location)) {
             return null;
         }
         Car car = cars.get(location);
@@ -55,12 +53,12 @@ public class ParkingLot {
         return car;
     }
 
-    public Integer getRemainingCapacity(){
+    public Integer getRemainingCapacity() {
         return size - parkingLocation.size();
     }
 
-    public Double getVacancyRate(){
-        return getRemainingCapacity()*1.0/size;
+    public Double getVacancyRate() {
+        return getRemainingCapacity() * 1.0 / size;
     }
 
 }
