@@ -27,31 +27,31 @@ class SupperParkingLotBoyTest {
         parkingLocation.put(car1.getPlateNumber(), 0);
         parkingLocation.put(car2.getPlateNumber(), 1);
         parkingLocation.put(car3.getPlateNumber(), 2);
-        ParkingLot parkingLot = ParkingLot.builder().size(3).cars(cars).parkingLocation(
+        return ParkingLot.builder().size(3).cars(cars).parkingLocation(
                 parkingLocation).build();
-        return parkingLot;
     }
 
     @Test
     void should_park_max_vacancyRate_parkinglot_when_parking_given_parkinglot_is_not_full() {
 
-        ParkingLot parkingLotMin = buildParkingLot();
-        ParkingLot parkingLotMid = buildParkingLot();
-        ParkingLot parkingLotMax = buildParkingLot();
+        ParkingLot parkingLotVacancyRateMin = buildParkingLot();
+        ParkingLot parkingLotVacancyRateMid = buildParkingLot();
+        ParkingLot parkingLotVacancyRateMax = buildParkingLot();
 
-        parkingLotMid.pickUp("123");
-        parkingLotMid.pickUp("456");
+        parkingLotVacancyRateMid.pickUp("123");
 
-        parkingLotMax.pickUp("123");
+        parkingLotVacancyRateMax.pickUp("123");
+        parkingLotVacancyRateMax.pickUp("456");
 
         SuperParkingLotBoy superParkingLotBoy = new SuperParkingLotBoy(
-                List.of(parkingLotMin, parkingLotMid, parkingLotMax));
+                List.of(parkingLotVacancyRateMin, parkingLotVacancyRateMid, parkingLotVacancyRateMax));
         Car car = Car.builder().plateNumber("abc").build();
         Optional<Ticket> ticket = superParkingLotBoy.park(car);
 
-        assertEquals(2,ticket.get().getParkingLotIndex());
-        assertEquals(0, parkingLotMax.getParkingLocation().get(ticket.get().getPlateNumber()));
-        assertEquals(car, parkingLotMax.getCars().get(parkingLotMax.getParkingLocation().get(ticket.get().getPlateNumber())));
+        assertEquals(2, ticket.get().getParkingLotIndex());
+        assertEquals(0, parkingLotVacancyRateMax.getParkingLocation().get(ticket.get().getPlateNumber()));
+        assertEquals(car, parkingLotVacancyRateMax.getCars()
+                .get(parkingLotVacancyRateMax.getParkingLocation().get(ticket.get().getPlateNumber())));
     }
 
 
