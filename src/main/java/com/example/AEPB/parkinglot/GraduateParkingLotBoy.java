@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 @AllArgsConstructor
-public class OrderParkingLotBoy extends ParkingBoy{
+public class GraduateParkingLotBoy extends ParkingBoy{
 
     private List<ParkingLot> parkingLotList;
 

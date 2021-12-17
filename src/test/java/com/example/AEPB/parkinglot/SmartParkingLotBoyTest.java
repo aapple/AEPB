@@ -1,9 +1,5 @@
 package com.example.AEPB.parkinglot;
 
-import com.example.AEPB.parkinglot.Car;
-import com.example.AEPB.parkinglot.ParkingLot;
-import com.example.AEPB.parkinglot.SmartParkingLotBoy;
-import com.example.AEPB.parkinglot.Ticket;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -16,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 
-class SmartOrderParkingLotBoyTest {
+class SmartParkingLotBoyTest {
 
-    private ParkingLot getOrderlyParkingLot() {
+    private ParkingLot buildParkingLot() {
         Car car1 = Car.builder().plateNumber("123").build();
         Car car2 = Car.builder().plateNumber("456").build();
         Car car3 = Car.builder().plateNumber("789").build();
@@ -40,9 +36,9 @@ class SmartOrderParkingLotBoyTest {
     @Test
     void should_park_max_capacity_parkinglot_when_parking_given_parkinglot_is_not_full() {
 
-        ParkingLot parkingLotMin = getOrderlyParkingLot();
-        ParkingLot parkingLotMid = getOrderlyParkingLot();
-        ParkingLot parkingLotMax = getOrderlyParkingLot();
+        ParkingLot parkingLotMin = buildParkingLot();
+        ParkingLot parkingLotMid = buildParkingLot();
+        ParkingLot parkingLotMax = buildParkingLot();
 
         parkingLotMid.pickUp("123");
 
@@ -62,9 +58,9 @@ class SmartOrderParkingLotBoyTest {
 
     @Test
     void should_fail_when_parking_given_parkinglot_is_full() {
-        ParkingLot parkingLotMin = getOrderlyParkingLot();
-        ParkingLot parkingLotMid = getOrderlyParkingLot();
-        ParkingLot parkingLotMax = getOrderlyParkingLot();
+        ParkingLot parkingLotMin = buildParkingLot();
+        ParkingLot parkingLotMid = buildParkingLot();
+        ParkingLot parkingLotMax = buildParkingLot();
 
         SmartParkingLotBoy smartParkingLotBoy = new SmartParkingLotBoy(
                 List.of(parkingLotMin, parkingLotMid, parkingLotMax));
